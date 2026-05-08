@@ -24,7 +24,12 @@ Triangle::Triangle()
 
 void Triangle::setVertex(int ind, Eigen::Vector3f ver) { v[ind] = ver; }
 
-void Triangle::setNormal(int ind, Vector3f n) { normal[ind] = n; }
+void Triangle::setNormal(int ind, Vector3f n) {
+    if (ind < 0 || ind > 2) {
+        throw std::runtime_error("Invalid index for setNormal");
+    }
+    normal[ind] = n;
+}
 
 void Triangle::setColor(int ind, float r, float g, float b)
 {
